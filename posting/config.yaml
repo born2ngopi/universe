@@ -1,0 +1,7 @@
+theme: tokyo-night
+animation: full
+focus:
+  on_startup: collection
+  on_response: body
+command_palette:
+  theme_preview: true
