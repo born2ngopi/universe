@@ -1,0 +1,14 @@
+gui:
+  language: en
+  border: 'rounded'
+  theme:
+    activeBorderColor:
+      - blue
+      - bold
+    inactiveBorderColor:
+      - white
+    selectedLineBgColor:
+      - blue
+    optionsTextColor:
+      - blue
+  expandFocusedSidePanel: true

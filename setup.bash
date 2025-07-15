@@ -64,12 +64,24 @@ else
   echo "⬇️  MDownload and install UV..."
   curl -LsSf https://astral.sh/uv/install.sh | sh
 
+  source $HOME/.local/bin/env
+
   echo "⬇️  Download and install Posting..."
   uv tool install --python 3.12 posting
   echo "✅ Instalasi Posting selesai"
 fi
 
 
+##################################
+# install lazydocke              #
+# ################################
+if command -v lazydocker >/dev/null 2>&1; then
+  echo "✅ lazydocker sudah terinstall"
+else
+  echo "⬇️  Install lazydocker"
+  go install github.com/jesseduffield/lazydocker@latest
+  echo "✅ Instalasi lazydocker selesai"
+fi
 ##################################
 # Copy Configration              #
 # ################################
@@ -110,10 +122,34 @@ if [ -d "$POSTING_DIR" ]; then
   # Jika backup folder sudah ada, tambahkan timestamp agar unik
   if [ -d "$POSTING_BACKUP_DIR" ]; then
     TIMESTAMP=$(date +%Y%m%d-%H%M%S)
-    NVIM_BACKUP_DIR="${POSTING_DIR}-backup-${TIMESTAMP}"
+    POSTING_BACKUP_DIR="${POSTING_DIR}-backup-${TIMESTAMP}"
     echo "ℹ️  Backup folder sudah ada, akan disimpan sebagai: $POSTING_BACKUP_DIR"
   fi
 
   mv "$POSTING_DIR" "$POSTING_BACKUP_DIR"
   echo "✅ Folder berhasil di-rename menjadi: $POSTING_BACKUP_DIR"
 fi
+
+cp -r ./posting $POSTING_DIR
+
+##################################
+# lazydocke                      #
+# ################################
+LD_DIR="$HOME/.config/lazydocker/"
+LD_BACKUP_DIR="$LD_DIR-backup"
+
+if [ -d "$LD_DIR" ]; then
+  echo "⚠️  Folder $LD_DIR ditemukan."
+
+  # Jika backup folder sudah ada, tambahkan timestamp agar unik
+  if [ -d "$LD_BACKUP_DIR" ]; then
+    TIMESTAMP=$(date +%Y%m%d-%H%M%S)
+    LD_BACKUP_DIR="${LD_DIR}-backup-${TIMESTAMP}"
+    echo "ℹ️  Backup folder sudah ada, akan disimpan sebagai: $LD_BACKUP_DIR"
+  fi
+
+  mv "$LD_DIR" "$LD_BACKUP_DIR"
+  echo "✅ Folder berhasil di-rename menjadi: $LD_BACKUP_DIR"
+fi
+
+cp -r ./lazydocker $LD_DIR
