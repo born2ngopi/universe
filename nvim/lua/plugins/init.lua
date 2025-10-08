@@ -12,6 +12,23 @@ return {
       require "configs.lspconfig"
     end,
   },
+  {
+  "williamboman/mason-lspconfig.nvim",
+  opts = {
+    -- daftar LSP yang ingin diinstall otomatis
+    ensure_installed = {
+      "gopls",
+      "pyright",
+      "rust_analyzer",
+      "jsonls",
+      "yamlls",
+      "html",
+      "cssls",
+      "ts_ls",
+    },
+    automatic_installation = true,  
+  },
+},
 
   -- test new blink
   -- { import = "nvchad.blink.lazyspec" },
