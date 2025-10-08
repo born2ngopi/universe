@@ -17,21 +17,27 @@ return {
   -- { import = "nvchad.blink.lazyspec" },
 
   {
-  "nvim-treesitter/nvim-treesitter",
-  opts = {
-   		ensure_installed = {
-   			"vim", "lua", "vimdoc",
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "vim", "lua", "vimdoc",
         "html", "css", "java", "go"
-   		},
+      },
       auto_install = true,
       highlight = {enable = true},
       indent = {enable = true}
-   	},
- },
+    },
+  },
   -- java 
   {
     "mfussenegger/nvim-jdtls",
   },
+  {
+      "b0o/schemastore.nvim",
+  },
+  {
+    "mg979/vim-visual-multi"
+  }
  -- 
 --  {
 --    "elmcgill/springboot-nvim",
